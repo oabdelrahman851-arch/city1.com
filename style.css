@@ -1,0 +1,109 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #e4e9ee, #057d83);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #020202;
+}
+
+/* APP */
+.app{
+    width: 350px;
+}
+
+/* SEARCH */
+.search-box{
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+/* input */
+input{
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+/* button */
+button{
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: hsl(197, 26%, 95%);
+    color: #c20808;
+    cursor: pointer; padding: 12px 30px;
+    font-size: 18px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #007bff,
+                0 0 10px #007bff,
+                0 0 20px #007bff;
+  }
+  to {
+    box-shadow: 0 0 10px #00c3ff,
+                0 0 20px #00c3ff,
+                0 0 40px #00c3ff;
+  }
+}
+
+/* button:hover */
+button:hover{
+    background-color: black;
+    color: #fff;
+}
+
+/* WEATHER CARD */
+.weather-card{
+    background: white;
+    backdrop-filter: blur(10px);
+
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    padding: 12px 30px;
+    font-size: 18px;
+    color: white;
+    background: #007bff;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    box-shadow: 0 0 5px #007bff,
+                0 0 10px #007bff,
+                0 0 20px #007bff;
+  }
+  to {
+    box-shadow: 0 0 10px #00c3ff,
+                0 0 20px #00c3ff,
+                0 0 40px #00c3ff;
+  }
+}
+/* weather-card:hover */
+.weather-card:hover{
+    background-color: black;
+    color: #fff;
+}
