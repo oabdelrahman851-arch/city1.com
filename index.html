@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>wheather App</title>
+    <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="app">
 
-        <!-- SERCH -->
-         <div class="search-box">
-            <input type="text" id="cityInput" placeholder="Search city...">
-            <button onclick="getweather()">Search</button>
-         </div>
-
-         <!-- WEATHWER CARD -->
-          <div id="weatherCard" class="weather-card">
-            <p class="hint">Search for a city🌏</p>
-          </div>
+<div class="app">
+    <div class="search-box">
+        <input
+            type="text"
+            id="cityInput"
+            placeholder="Enter city..."
+        >
+        <button onclick="getWeather()">Search</button>
     </div>
+
+    <div id="weatherCard" class="weather-card">
+        Enter a city to see the weather.
+    </div>
+</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
