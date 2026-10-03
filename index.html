@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#050b16">
-<meta name="description" content="MAS للتشطيبات والفحص والمعاينة - فحص الشقق قبل الاستلام، مراجعة التشطيبات، كشف العيوب ومتابعة جودة التنفيذ في العلمين الجديدة والساحل الشمالي.">
+<meta name="theme-color" content="#050914">
 
-<title>MAS | التشطيبات والفحص الهندسي</title>
+<meta name="description" content="MAS للفحص والتشطيبات — فحص واستلام الشقق والوحدات، كشف عيوب التشطيب، السباكة، التسريبات، الكهرباء والأعمال الفنية في العلمين الجديدة والساحل الشمالي.">
+
+<title>MAS | فحص وتشطيبات الوحدات</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,34 +15,35 @@
 
 <style>
 :root{
-  --bg:#050b16;
-  --bg2:#091426;
-  --card:rgba(15,31,55,.72);
-  --tx:#f5f8fc;
-  --mut:#9eafc5;
-  --ac:#ff6b1a;
+  --bg:#050914;
+  --bg2:#091222;
+  --card:rgba(15,25,43,.72);
+  --card2:rgba(18,31,52,.9);
+  --tx:#f5f8ff;
+  --mut:#9baac0;
+  --ac:#ff6818;
   --ac2:#ffb347;
-  --blue:#3478ff;
+  --blue:#317cff;
   --green:#25d366;
   --line:rgba(255,255,255,.09);
-  --glass:rgba(5,11,22,.78);
-  --shadow:0 25px 70px rgba(0,0,0,.30);
-
-  --radius:clamp(16px,2.2vw,25px);
-  --pad:clamp(16px,5vw,72px);
+  --glass:rgba(5,9,20,.78);
+  --shadow:0 25px 80px rgba(0,0,0,.32);
+  --max:1250px;
+  --pad:clamp(17px,5vw,75px);
   --sec:clamp(65px,9vw,115px);
-  --max:1240px;
+  --radius:clamp(18px,2.5vw,28px);
 }
 
 :root[data-theme="light"]{
   --bg:#f4f7fb;
-  --bg2:#e8eef6;
-  --card:rgba(255,255,255,.86);
+  --bg2:#e8eef7;
+  --card:rgba(255,255,255,.82);
+  --card2:#fff;
   --tx:#09182f;
-  --mut:#53647d;
-  --line:rgba(9,24,47,.12);
-  --glass:rgba(244,247,251,.88);
-  --shadow:0 25px 60px rgba(24,45,80,.13);
+  --mut:#53647b;
+  --line:rgba(9,24,47,.11);
+  --glass:rgba(244,247,251,.85);
+  --shadow:0 25px 65px rgba(30,55,90,.13);
 }
 
 *{
@@ -53,26 +55,16 @@
 html{
   scroll-behavior:smooth;
   overflow-x:clip;
-  max-width:100%;
   scroll-padding-top:85px;
-  -webkit-text-size-adjust:100%;
 }
 
 body{
-  min-height:100%;
-  max-width:100%;
-  overflow-x:hidden;
   background:var(--bg);
   color:var(--tx);
-  font-family:'Cairo',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
+  font-family:'Cairo',system-ui,sans-serif;
   line-height:1.8;
-  font-size:clamp(15px,1.1vw + 11px,18px);
-  transition:background .4s,color .4s;
-}
-
-img,svg{
-  max-width:100%;
-  display:block;
+  overflow-x:hidden;
+  transition:.4s;
 }
 
 a{
@@ -91,15 +83,10 @@ button{
   color:#fff;
 }
 
-:focus-visible{
-  outline:3px solid var(--ac2);
-  outline-offset:3px;
-}
-
-.wrap{
-  width:100%;
-  max-width:var(--max);
-  margin:auto;
+img,
+svg{
+  max-width:100%;
+  display:block;
 }
 
 /* =========================
@@ -111,10 +98,10 @@ button{
   top:0;
   inset-inline:0;
   height:4px;
-  z-index:1000;
+  background:linear-gradient(90deg,var(--ac),var(--ac2));
   transform:scaleX(0);
   transform-origin:right;
-  background:linear-gradient(90deg,var(--ac),var(--ac2));
+  z-index:200;
 }
 
 /* =========================
@@ -130,16 +117,15 @@ nav{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:14px;
-  padding:env(safe-area-inset-top,0px) max(var(--pad),env(safe-area-inset-right,0px)) 0 max(var(--pad),env(safe-area-inset-left,0px));
-  transition:.35s;
+  padding:0 var(--pad);
+  transition:.4s;
 }
 
 nav.scrolled{
   height:64px;
   background:var(--glass);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   border-bottom:1px solid var(--line);
 }
 
@@ -147,10 +133,9 @@ nav.scrolled{
   display:flex;
   align-items:center;
   gap:10px;
+  font-size:24px;
   font-weight:900;
-  font-size:clamp(20px,2.4vw,25px);
   letter-spacing:1px;
-  flex-shrink:0;
 }
 
 .logo-box{
@@ -158,25 +143,24 @@ nav.scrolled{
   height:43px;
   display:grid;
   place-items:center;
-  border-radius:13px;
+  border-radius:14px;
   background:linear-gradient(135deg,var(--ac),var(--ac2));
   color:#fff;
-  font-size:18px;
-  box-shadow:0 10px 30px -12px var(--ac);
+  box-shadow:0 10px 35px -12px var(--ac);
 }
 
 .links{
   display:flex;
   align-items:center;
-  gap:clamp(15px,2.4vw,32px);
+  gap:clamp(17px,2.7vw,34px);
 }
 
 .links a{
   position:relative;
   color:var(--mut);
-  font-weight:700;
-  font-size:15px;
-  padding:6px 0;
+  font-size:14px;
+  font-weight:800;
+  padding:7px 0;
   transition:.3s;
 }
 
@@ -187,6 +171,7 @@ nav.scrolled{
   inset-inline-start:0;
   width:0;
   height:2px;
+  border-radius:10px;
   background:var(--ac);
   transition:.3s;
 }
@@ -209,70 +194,41 @@ nav.scrolled{
 
 .icon-btn,
 .burger{
-  width:44px;
-  height:44px;
-  border:1px solid var(--line);
+  width:43px;
+  height:43px;
   border-radius:50%;
+  border:1px solid var(--line);
   background:var(--card);
   display:grid;
   place-items:center;
-  font-size:17px;
   transition:.3s;
 }
 
 .icon-btn:hover{
   border-color:var(--ac);
   color:var(--ac);
-  transform:rotate(8deg);
-}
-
-.burger{
-  display:none;
-  border-radius:12px;
-  flex-direction:column;
-  gap:5px;
-}
-
-.burger span{
-  width:20px;
-  height:2px;
-  background:var(--tx);
-  border-radius:3px;
-  transition:.35s;
-}
-
-.burger.open span:nth-child(1){
-  transform:translateY(7px) rotate(45deg);
-}
-
-.burger.open span:nth-child(2){
-  opacity:0;
-}
-
-.burger.open span:nth-child(3){
-  transform:translateY(-7px) rotate(-45deg);
+  transform:rotate(10deg);
 }
 
 .btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:9px;
-  min-height:50px;
-  padding:12px clamp(20px,3vw,31px);
-  border:1px solid transparent;
+  min-height:49px;
+  padding:12px 27px;
   border-radius:100px;
+  border:1px solid transparent;
   background:linear-gradient(135deg,var(--ac),var(--ac2));
   color:#fff;
-  font-weight:800;
-  box-shadow:0 14px 35px -15px var(--ac);
-  transition:.3s;
-  text-align:center;
+  font-weight:900;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  box-shadow:0 16px 40px -16px var(--ac);
+  transition:.35s;
 }
 
 .btn:hover{
   transform:translateY(-4px);
-  box-shadow:0 18px 45px -15px var(--ac);
+  box-shadow:0 20px 50px -14px var(--ac);
 }
 
 .btn-outline{
@@ -287,14 +243,41 @@ nav.scrolled{
   color:#fff;
 }
 
+.burger{
+  display:none;
+  border-radius:12px;
+  flex-direction:column;
+  gap:5px;
+}
+
+.burger span{
+  width:20px;
+  height:2px;
+  border-radius:3px;
+  background:var(--tx);
+  transition:.3s;
+}
+
+.burger.open span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+
+.burger.open span:nth-child(2){
+  opacity:0;
+}
+
+.burger.open span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
 .scrim{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.58);
+  background:rgba(0,0,0,.6);
+  z-index:90;
   opacity:0;
   pointer-events:none;
-  transition:.35s;
-  z-index:90;
+  transition:.3s;
 }
 
 .scrim.show{
@@ -309,16 +292,15 @@ nav.scrolled{
 .hero{
   min-height:100vh;
   min-height:100svh;
+  padding:125px var(--pad) 80px;
   position:relative;
   display:flex;
   align-items:center;
-  padding:calc(115px + env(safe-area-inset-top,0px)) var(--pad) 80px;
   overflow:hidden;
   isolation:isolate;
-
   background:
     radial-gradient(circle at 80% 25%,rgba(255,107,26,.18),transparent 30%),
-    radial-gradient(circle at 10% 85%,rgba(52,120,255,.14),transparent 32%);
+    radial-gradient(circle at 10% 80%,rgba(49,124,255,.14),transparent 30%);
 }
 
 .hero::before{
@@ -326,13 +308,12 @@ nav.scrolled{
   position:absolute;
   inset:0;
   z-index:-2;
-  opacity:.48;
+  opacity:.35;
   background-image:
     linear-gradient(var(--line) 1px,transparent 1px),
     linear-gradient(90deg,var(--line) 1px,transparent 1px);
   background-size:60px 60px;
-  -webkit-mask-image:radial-gradient(circle,#000,transparent 78%);
-  mask-image:radial-gradient(circle,#000,transparent 78%);
+  mask-image:radial-gradient(circle,#000,transparent 75%);
 }
 
 .hero::after{
@@ -342,17 +323,17 @@ nav.scrolled{
   height:500px;
   border-radius:50%;
   background:var(--ac);
-  filter:blur(170px);
+  filter:blur(160px);
   opacity:.08;
-  top:-250px;
-  inset-inline-start:-150px;
+  inset-inline-end:-200px;
+  top:20%;
+  animation:orb 8s ease-in-out infinite alternate;
   z-index:-1;
-  animation:heroGlow 8s ease-in-out infinite alternate;
 }
 
-@keyframes heroGlow{
+@keyframes orb{
   to{
-    transform:translate(100px,80px) scale(1.2);
+    transform:translate(-80px,50px) scale(1.2);
   }
 }
 
@@ -361,59 +342,62 @@ nav.scrolled{
   max-width:var(--max);
   margin:auto;
   display:grid;
-  grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);
+  grid-template-columns:1.15fr .85fr;
+  gap:60px;
   align-items:center;
-  gap:clamp(25px,5vw,80px);
 }
 
-.eyebrow{
+.badge{
   display:inline-flex;
   align-items:center;
   gap:9px;
   padding:7px 17px;
   border:1px solid var(--line);
-  border-radius:100px;
   background:var(--card);
+  border-radius:100px;
   color:var(--mut);
-  font-size:clamp(12px,1.4vw,14px);
-  font-weight:700;
+  font-size:13px;
+  font-weight:800;
   margin-bottom:22px;
   backdrop-filter:blur(12px);
 }
 
-.eyebrow i{
+.badge i{
   width:8px;
   height:8px;
   border-radius:50%;
   background:var(--ac);
-  animation:dotPulse 1.8s infinite;
+  animation:pulse 1.7s infinite;
 }
 
-@keyframes dotPulse{
-  0%{box-shadow:0 0 0 0 rgba(255,107,26,.5)}
-  100%{box-shadow:0 0 0 12px transparent}
+@keyframes pulse{
+  0%{
+    box-shadow:0 0 0 0 rgba(255,107,26,.5);
+  }
+  100%{
+    box-shadow:0 0 0 12px transparent;
+  }
 }
 
 h1{
-  font-size:clamp(38px,6.2vw,86px);
+  font-size:clamp(39px,6.3vw,83px);
   line-height:1.12;
   font-weight:900;
   letter-spacing:-1px;
-  overflow-wrap:anywhere;
 }
 
-.gt{
+.gradient{
   background:linear-gradient(135deg,var(--ac),var(--ac2));
   -webkit-background-clip:text;
   background-clip:text;
   color:transparent;
 }
 
-.hero p.lead{
-  max-width:650px;
-  margin:22px 0 32px;
+.hero-text{
+  max-width:680px;
   color:var(--mut);
-  font-size:clamp(15px,1.8vw,20px);
+  font-size:clamp(15px,1.7vw,19px);
+  margin:24px 0 32px;
 }
 
 .actions{
@@ -422,187 +406,163 @@ h1{
   gap:12px;
 }
 
-.hero-points{
+.hero-mini{
   display:flex;
   flex-wrap:wrap;
-  gap:12px;
-  margin-top:32px;
+  gap:28px;
+  margin-top:40px;
 }
 
-.point{
+.mini{
   display:flex;
   align-items:center;
-  gap:8px;
-  color:var(--mut);
-  font-size:13px;
+  gap:10px;
 }
 
-.point b{
-  color:var(--ac2);
+.mini-icon{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:rgba(255,107,26,.1);
+  border:1px solid rgba(255,107,26,.2);
+}
+
+.mini strong{
+  display:block;
+  font-size:14px;
+}
+
+.mini span{
+  color:var(--mut);
+  font-size:11px;
 }
 
 /* HERO VISUAL */
 
 .visual{
   position:relative;
-  width:100%;
-  max-width:510px;
+  width:min(500px,100%);
   aspect-ratio:1;
-  justify-self:center;
+  margin:auto;
 }
 
 .visual-ring{
   position:absolute;
-  inset:8%;
-  border:1px solid rgba(255,107,26,.2);
+  width:78%;
+  aspect-ratio:1;
   border-radius:50%;
+  border:1px solid rgba(255,107,26,.2);
+  top:11%;
+  left:11%;
   animation:spin 22s linear infinite;
 }
 
-.visual-ring::before{
+.visual-ring::before,
+.visual-ring::after{
   content:"";
   position:absolute;
-  width:11px;
-  height:11px;
+  width:10px;
+  height:10px;
   border-radius:50%;
   background:var(--ac);
-  top:7%;
-  left:18%;
   box-shadow:0 0 25px var(--ac);
 }
 
+.visual-ring::before{
+  top:-5px;
+  left:30%;
+}
+
+.visual-ring::after{
+  bottom:20%;
+  right:-5px;
+}
+
 @keyframes spin{
-  to{transform:rotate(360deg)}
+  to{
+    transform:rotate(360deg);
+  }
 }
 
-.building{
+.house{
   position:absolute;
-  bottom:10%;
-  inset-inline-end:12%;
-  width:58%;
-  height:61%;
-  background:linear-gradient(135deg,#183453,#09172a);
-  border:1px solid rgba(255,255,255,.13);
-  transform:skewY(-4deg);
-  box-shadow:30px 35px 80px rgba(0,0,0,.4);
-  border-radius:5px;
+  width:55%;
+  height:53%;
+  bottom:13%;
+  right:20%;
+  border:1px solid rgba(255,255,255,.15);
+  background:linear-gradient(145deg,#1d385a,#0a1527);
+  transform:skewY(-5deg);
+  box-shadow:30px 40px 80px rgba(0,0,0,.4);
 }
 
-.building::before{
+.house::before{
   content:"";
   position:absolute;
-  inset:9%;
+  inset:10%;
   background:
     repeating-linear-gradient(
       90deg,
-      transparent 0 7%,
-      rgba(255,179,71,.65) 7% 10%,
-      transparent 10% 17%
+      transparent 0 15%,
+      rgba(255,179,71,.55) 15% 20%,
+      transparent 20% 31%
     ),
     repeating-linear-gradient(
       0deg,
-      transparent 0 9%,
-      rgba(255,255,255,.08) 9% 10%
+      transparent 0 16%,
+      rgba(255,255,255,.08) 16% 18%
     );
 }
 
-.building::after{
+.house::after{
   content:"";
   position:absolute;
-  top:-30px;
-  inset-inline-start:10%;
-  width:80%;
-  height:30px;
+  width:110%;
+  height:20px;
+  top:-20px;
+  left:-5%;
   background:linear-gradient(90deg,var(--ac),var(--ac2));
-  transform:skewX(-45deg);
+  transform:skewX(-35deg);
 }
 
-.scan{
+.inspect-card{
   position:absolute;
-  width:64%;
-  height:2px;
-  background:linear-gradient(90deg,transparent,var(--ac),transparent);
-  bottom:34%;
-  inset-inline-end:9%;
-  animation:scan 3s ease-in-out infinite;
-}
-
-@keyframes scan{
-  0%,100%{
-    opacity:.2;
-    transform:translateY(0);
-  }
-  50%{
-    opacity:1;
-    transform:translateY(-90px);
-  }
-}
-
-.crane{
-  position:absolute;
-  inset:7% auto auto 5%;
-  width:43%;
-  height:72%;
-}
-
-.crane b{
-  position:absolute;
-  background:var(--ac);
-  display:block;
-}
-
-.crane .v{
-  width:6px;
-  height:100%;
-  left:20%;
-  bottom:0;
-}
-
-.crane .h{
-  height:6px;
-  width:120%;
-  top:0;
-  left:20%;
-}
-
-.crane .k{
-  width:3px;
-  height:27%;
-  top:2%;
-  left:112%;
-  animation:hook 3s ease-in-out infinite alternate;
-}
-
-@keyframes hook{
-  to{transform:translateY(30px)}
-}
-
-.fc{
-  position:absolute;
-  padding:11px 16px;
-  border:1px solid var(--line);
+  padding:14px 18px;
+  border-radius:18px;
   background:var(--card);
-  backdrop-filter:blur(14px);
-  border-radius:16px;
+  border:1px solid var(--line);
+  backdrop-filter:blur(18px);
   box-shadow:var(--shadow);
-  font-weight:800;
-  font-size:clamp(12px,1.5vw,15px);
+  font-weight:900;
+  font-size:13px;
   animation:float 5s ease-in-out infinite;
 }
 
-.fc1{
-  top:13%;
-  inset-inline-end:0;
+.inspect-card.one{
+  top:15%;
+  right:0;
 }
 
-.fc2{
-  bottom:10%;
-  inset-inline-start:0;
+.inspect-card.two{
+  bottom:17%;
+  left:0;
   animation-delay:-2s;
 }
 
+.inspect-card span{
+  display:block;
+  color:var(--mut);
+  font-size:10px;
+  font-weight:600;
+  margin-top:2px;
+}
+
 @keyframes float{
-  50%{transform:translateY(-11px)}
+  50%{
+    transform:translateY(-12px);
+  }
 }
 
 /* =========================
@@ -611,7 +571,7 @@ h1{
 
 .marquee{
   overflow:hidden;
-  padding:15px 0;
+  padding:14px 0;
   background:linear-gradient(90deg,var(--ac),var(--ac2));
   color:#fff;
   font-weight:900;
@@ -620,14 +580,16 @@ h1{
 
 .track{
   display:flex;
-  gap:48px;
   width:max-content;
+  gap:45px;
   white-space:nowrap;
-  animation:marquee 30s linear infinite;
+  animation:marquee 25s linear infinite;
 }
 
 @keyframes marquee{
-  to{transform:translateX(-50%)}
+  to{
+    transform:translateX(-50%);
+  }
 }
 
 /* =========================
@@ -642,30 +604,36 @@ section{
   background:var(--bg2);
 }
 
-.head{
-  max-width:760px;
-  margin:0 auto clamp(35px,6vw,62px);
-  text-align:center;
+.container{
+  width:100%;
+  max-width:var(--max);
+  margin:auto;
 }
 
-.head small{
+.section-head{
+  text-align:center;
+  max-width:750px;
+  margin:0 auto 55px;
+}
+
+.section-head small{
   color:var(--ac);
   font-weight:900;
   letter-spacing:2px;
 }
 
-.head h2{
-  font-size:clamp(28px,4.6vw,52px);
-  line-height:1.25;
+.section-head h2{
+  font-size:clamp(29px,4.7vw,52px);
+  line-height:1.2;
   font-weight:900;
 }
 
-.head p{
+.section-head p{
   color:var(--mut);
-  margin-top:10px;
+  margin-top:12px;
 }
 
-.head::after{
+.section-head::after{
   content:"";
   display:block;
   width:75px;
@@ -675,256 +643,106 @@ section{
   margin:16px auto 0;
 }
 
-.grid{
-  display:grid;
-  gap:clamp(14px,2vw,22px);
-  max-width:var(--max);
-  margin:auto;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));
-}
-
 /* =========================
-   CARDS
+   SERVICE CARDS
 ========================= */
 
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
 .card{
-  padding:clamp(22px,3vw,32px);
+  position:relative;
+  overflow:hidden;
+  padding:30px;
   border-radius:var(--radius);
   border:1px solid var(--line);
   background:var(--card);
   backdrop-filter:blur(12px);
-  position:relative;
-  overflow:hidden;
   transition:
-    transform .45s cubic-bezier(.2,.8,.2,1),
-    border-color .45s,
-    box-shadow .45s;
+    transform .55s cubic-bezier(.2,.8,.2,1),
+    border-color .4s,
+    box-shadow .4s;
 }
 
 .card::before{
   content:"";
   position:absolute;
-  width:170px;
-  height:170px;
+  width:180px;
+  height:180px;
   border-radius:50%;
   background:var(--ac);
   filter:blur(80px);
   opacity:0;
-  top:-100px;
-  inset-inline-end:-70px;
+  right:-80px;
+  top:-80px;
   transition:.5s;
 }
 
 .card:hover{
-  transform:translateY(-8px);
-  border-color:rgba(255,107,26,.5);
+  transform:translateY(-9px);
+  border-color:rgba(255,107,26,.45);
   box-shadow:var(--shadow);
 }
 
 .card:hover::before{
-  opacity:.13;
+  opacity:.1;
 }
 
 .card>*{
   position:relative;
-  z-index:1;
 }
 
 .icon{
-  width:60px;
-  height:60px;
-  border-radius:17px;
+  width:62px;
+  height:62px;
+  border-radius:18px;
   display:grid;
   place-items:center;
-  font-size:27px;
+  font-size:28px;
   background:linear-gradient(135deg,var(--ac),var(--ac2));
-  margin-bottom:18px;
-  box-shadow:0 12px 28px -14px var(--ac);
+  margin-bottom:19px;
+  box-shadow:0 15px 35px -15px var(--ac);
   transition:.4s;
 }
 
 .card:hover .icon{
-  transform:rotate(-6deg) scale(1.08);
+  transform:rotate(-7deg) scale(1.08);
 }
 
 .card h3{
-  font-size:clamp(17px,2vw,21px);
+  font-size:20px;
   margin-bottom:7px;
 }
 
 .card p{
   color:var(--mut);
-  font-size:.93em;
-}
-
-/* =========================
-   SERVICES
-========================= */
-
-.service-badge{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  margin-top:12px;
-  padding:5px 12px;
-  border-radius:50px;
-  background:rgba(255,107,26,.08);
-  color:var(--ac2);
-  font-size:12px;
-  font-weight:800;
+  font-size:14px;
 }
 
 /* =========================
    INSPECTION
 ========================= */
 
-.inspection{
-  position:relative;
-  overflow:hidden;
+.inspect-grid{
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 }
 
-.inspection::before{
-  content:"";
+.check-card{
+  min-height:245px;
+}
+
+.check-number{
   position:absolute;
-  width:450px;
-  height:450px;
-  border-radius:50%;
-  background:var(--blue);
-  filter:blur(150px);
-  opacity:.08;
-  top:-200px;
-  inset-inline-end:-150px;
-}
-
-.inspection-box{
-  max-width:var(--max);
-  margin:auto;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-  align-items:stretch;
-}
-
-.check-list{
-  display:grid;
-  gap:12px;
-}
-
-.check{
-  display:flex;
-  align-items:flex-start;
-  gap:13px;
-  padding:16px;
-  border:1px solid var(--line);
-  border-radius:16px;
-  background:var(--card);
-}
-
-.check-icon{
-  min-width:34px;
-  width:34px;
-  height:34px;
-  display:grid;
-  place-items:center;
-  border-radius:10px;
-  background:rgba(37,211,102,.12);
-  color:#25d366;
+  top:12px;
+  left:18px;
+  font-size:65px;
+  line-height:1;
   font-weight:900;
-}
-
-.check h4{
-  font-size:16px;
-}
-
-.check p{
-  color:var(--mut);
-  font-size:13px;
-  margin-top:2px;
-}
-
-.inspection-visual{
-  min-height:450px;
-  border-radius:var(--radius);
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 50% 30%,rgba(255,107,26,.18),transparent 35%),
-    linear-gradient(145deg,#102743,#07101e);
-  position:relative;
-  overflow:hidden;
-  display:grid;
-  place-items:center;
-}
-
-.inspection-visual::before{
-  content:"";
-  position:absolute;
-  inset:15%;
-  border:1px solid rgba(255,255,255,.1);
-  transform:rotate(45deg);
-}
-
-.inspection-card{
-  width:min(82%,340px);
-  padding:25px;
-  border-radius:22px;
-  background:rgba(8,18,33,.82);
-  border:1px solid rgba(255,255,255,.13);
-  backdrop-filter:blur(16px);
-  box-shadow:0 30px 70px rgba(0,0,0,.35);
-  position:relative;
-  z-index:2;
-}
-
-.inspection-card-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:22px;
-}
-
-.inspection-card-top b{
-  font-size:18px;
-}
-
-.status{
-  padding:5px 10px;
-  border-radius:50px;
-  background:rgba(37,211,102,.12);
-  color:#25d366;
-  font-size:11px;
-  font-weight:800;
-}
-
-.progress-item{
-  margin-bottom:16px;
-}
-
-.progress-head{
-  display:flex;
-  justify-content:space-between;
-  font-size:12px;
-  color:var(--mut);
-  margin-bottom:7px;
-}
-
-.progress-line{
-  height:7px;
-  border-radius:20px;
-  background:rgba(255,255,255,.08);
-  overflow:hidden;
-}
-
-.progress-line span{
-  display:block;
-  height:100%;
-  border-radius:20px;
-  background:linear-gradient(90deg,var(--ac),var(--ac2));
-  animation:progressLoop 3s ease-in-out infinite alternate;
-}
-
-@keyframes progressLoop{
-  from{width:30%}
-  to{width:92%}
+  color:var(--ac);
+  opacity:.08;
 }
 
 /* =========================
@@ -936,19 +754,19 @@ section{
 }
 
 .step{
-  position:relative;
+  padding-top:38px;
 }
 
 .step::before{
   counter-increment:step;
   content:"0" counter(step);
   display:block;
-  color:var(--ac);
-  font-size:44px;
-  font-weight:900;
+  font-size:48px;
   line-height:1;
-  opacity:.28;
-  margin-bottom:16px;
+  color:var(--ac);
+  opacity:.25;
+  font-weight:900;
+  margin-bottom:17px;
 }
 
 /* =========================
@@ -956,147 +774,159 @@ section{
 ========================= */
 
 .projects{
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));
+  grid-template-columns:repeat(auto-fit,minmax(290px,1fr));
 }
 
 .project{
+  min-height:330px;
   position:relative;
-  min-height:clamp(270px,32vw,370px);
-  border-radius:var(--radius);
   overflow:hidden;
+  border-radius:var(--radius);
   border:1px solid var(--line);
-  background:linear-gradient(145deg,#132c4b,#07101f);
-  color:#f5f8fc;
-  transition:.45s;
-}
-
-.project::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(to top,rgba(0,0,0,.9),transparent 65%),
-    radial-gradient(circle at 50% 35%,rgba(255,107,26,.3),transparent 35%);
+  background:linear-gradient(145deg,#173455,#07101f);
+  transition:.5s;
 }
 
 .project:hover{
-  transform:translateY(-8px) scale(1.01);
+  transform:translateY(-8px) scale(1.015);
   border-color:var(--ac);
 }
 
-.pb{
+.project-art{
   position:absolute;
-  width:48%;
-  height:55%;
-  bottom:26%;
-  inset-inline-start:26%;
-  background:linear-gradient(145deg,#23466c,#0d1c31);
-  border:1px solid rgba(255,255,255,.15);
+  inset:0;
+  background:
+    radial-gradient(circle at 50% 32%,rgba(255,107,26,.3),transparent 30%),
+    linear-gradient(to top,rgba(0,0,0,.9),transparent 65%);
 }
 
-.pb::before{
+.project-building{
+  position:absolute;
+  width:47%;
+  height:54%;
+  left:26%;
+  bottom:27%;
+  background:linear-gradient(145deg,#2b4d73,#0c1a2c);
+  border:1px solid rgba(255,255,255,.13);
+  box-shadow:0 25px 50px rgba(0,0,0,.35);
+}
+
+.project-building::before{
   content:"";
   position:absolute;
   inset:10%;
   background:
     repeating-linear-gradient(
       90deg,
-      rgba(255,179,71,.55) 0 6px,
-      transparent 6px 22px
+      rgba(255,179,71,.5) 0 5px,
+      transparent 5px 22px
     ),
     repeating-linear-gradient(
       0deg,
-      transparent 0 20px,
-      rgba(255,255,255,.08) 20px 22px
+      transparent 0 18px,
+      rgba(255,255,255,.1) 18px 20px
     );
 }
 
-.pc{
+.project-content{
   position:absolute;
   bottom:0;
   inset-inline:0;
-  padding:22px;
+  padding:23px;
   z-index:2;
+  color:#fff;
 }
 
-.pc small{
+.project-content small{
   color:var(--ac2);
-  font-weight:800;
+  font-weight:900;
 }
 
-.pc h3{
-  font-size:clamp(18px,2.2vw,22px);
+.project-content h3{
+  font-size:21px;
+}
+
+/* =========================
+   WHY
+========================= */
+
+.why-grid{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.why{
+  text-align:center;
+}
+
+.why .icon{
+  margin-inline:auto;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta-box{
+  max-width:1050px;
+  margin:auto;
+  text-align:center;
+  padding:clamp(30px,6vw,65px);
+  border:1px solid var(--line);
+  border-radius:32px;
+  background:
+    radial-gradient(circle at 90% 20%,rgba(255,107,26,.15),transparent 30%),
+    radial-gradient(circle at 10% 80%,rgba(49,124,255,.1),transparent 30%),
+    var(--card);
+  box-shadow:var(--shadow);
+}
+
+.cta-box h2{
+  font-size:clamp(30px,5vw,52px);
+  font-weight:900;
+}
+
+.cta-box p{
+  color:var(--mut);
+  margin:12px auto 28px;
+  max-width:600px;
 }
 
 /* =========================
    CONTACT
 ========================= */
 
-.contact{
-  max-width:1050px;
-  margin:auto;
-  padding:clamp(25px,5vw,55px);
-  border-radius:clamp(20px,3vw,30px);
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at 90% 20%,rgba(255,107,26,.14),transparent 30%),
-    var(--card);
+.contact-grid{
+  max-width:1000px;
+  margin:35px auto;
+}
+
+.contact-card{
   text-align:center;
 }
 
-.contact .grid{
-  margin:32px auto;
-  text-align:center;
+.contact-card .icon{
+  margin-inline:auto;
 }
 
-.contact .card{
-  padding:23px;
-}
-
-.contact .card a{
+.contact-card a{
   direction:ltr;
   display:inline-block;
-  font-weight:800;
+  font-weight:900;
+  color:var(--ac2);
 }
 
-.contact .card a:hover{
-  color:var(--ac);
-}
-
-.socials{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:10px;
-  margin-top:18px;
-}
-
-.social{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
-  padding:10px 17px;
-  border-radius:50px;
-  border:1px solid var(--line);
-  background:var(--card);
-  font-weight:700;
-  transition:.3s;
-}
-
-.social:hover{
-  transform:translateY(-3px);
-  border-color:var(--ac);
+.contact-card a:hover{
   color:var(--ac);
 }
 
 /* =========================
-   FLOAT
+   FLOATING
 ========================= */
 
 .float{
   position:fixed;
-  bottom:max(18px,env(safe-area-inset-bottom,0px));
-  inset-inline-start:max(16px,env(safe-area-inset-left,0px));
+  bottom:max(18px,env(safe-area-inset-bottom));
+  inset-inline-start:max(17px,env(safe-area-inset-left));
   z-index:80;
   display:flex;
   flex-direction:column;
@@ -1105,8 +935,8 @@ section{
 
 .float a,
 .float button{
-  width:54px;
-  height:54px;
+  width:53px;
+  height:53px;
   border:0;
   border-radius:50%;
   display:grid;
@@ -1116,22 +946,25 @@ section{
   box-shadow:0 12px 30px rgba(0,0,0,.3);
 }
 
-.wa{
+.whatsapp{
   background:#25d366;
-  animation:waPulse 2s infinite;
+  animation:waPulse 2.2s infinite;
 }
 
 @keyframes waPulse{
-  0%{box-shadow:0 0 0 0 rgba(37,211,102,.35),0 12px 30px rgba(0,0,0,.3)}
-  70%{box-shadow:0 0 0 15px transparent,0 12px 30px rgba(0,0,0,.3)}
-  100%{box-shadow:0 0 0 0 transparent,0 12px 30px rgba(0,0,0,.3)}
+  0%{
+    box-shadow:0 0 0 0 rgba(37,211,102,.45),0 12px 30px rgba(0,0,0,.3);
+  }
+  70%{
+    box-shadow:0 0 0 13px transparent,0 12px 30px rgba(0,0,0,.3);
+  }
 }
 
 .top{
   background:var(--ac);
   opacity:0;
   pointer-events:none;
-  transform:translateY(12px);
+  transform:translateY(15px);
   transition:.3s;
 }
 
@@ -1142,54 +975,23 @@ section{
 }
 
 /* =========================
-   REVEAL ANIMATION
-   IMPORTANT:
-   animation repeats every time
-   element enters viewport
+   REVEAL
 ========================= */
 
 .reveal{
   opacity:0;
-  transform:translateY(45px) scale(.96);
+  transform:translateY(55px) scale(.96);
+  filter:blur(5px);
+  transition:
+    opacity .8s cubic-bezier(.2,.8,.2,1),
+    transform .8s cubic-bezier(.2,.8,.2,1),
+    filter .8s;
 }
 
 .reveal.show{
-  animation:revealUp .8s cubic-bezier(.2,.75,.2,1) both;
-}
-
-@keyframes revealUp{
-  0%{
-    opacity:0;
-    transform:translateY(45px) scale(.96);
-  }
-  70%{
-    opacity:1;
-    transform:translateY(-4px) scale(1.01);
-  }
-  100%{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
-}
-
-.reveal-left{
-  opacity:0;
-  transform:translateX(45px);
-}
-
-.reveal-left.show{
-  animation:revealLeft .8s cubic-bezier(.2,.75,.2,1) both;
-}
-
-@keyframes revealLeft{
-  from{
-    opacity:0;
-    transform:translateX(45px);
-  }
-  to{
-    opacity:1;
-    transform:translateX(0);
-  }
+  opacity:1;
+  transform:none;
+  filter:blur(0);
 }
 
 /* =========================
@@ -1197,72 +999,51 @@ section{
 ========================= */
 
 footer{
-  padding:28px var(--pad);
+  padding:30px var(--pad);
   text-align:center;
   color:var(--mut);
+  font-size:13px;
   border-top:1px solid var(--line);
-  font-size:14px;
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE
 ========================= */
-
-@media(min-width:1700px){
-  :root{
-    --max:1440px;
-  }
-
-  body{
-    font-size:19px;
-  }
-}
 
 @media(max-width:1000px){
 
   .hero-inner{
     grid-template-columns:1fr;
-  }
-
-  .hero-copy{
     text-align:center;
   }
 
-  .hero-copy .eyebrow{
+  .hero-text{
     margin-inline:auto;
   }
 
-  .hero p.lead{
-    margin-inline:auto;
-  }
-
-  .actions{
-    justify-content:center;
-  }
-
-  .hero-points{
+  .actions,
+  .hero-mini{
     justify-content:center;
   }
 
   .visual{
-    max-width:390px;
     order:-1;
-    margin:0 auto -5px;
+    max-width:380px;
   }
 
-  .inspection-box{
-    grid-template-columns:1fr;
+  .why-grid{
+    grid-template-columns:repeat(2,1fr);
   }
 }
 
 @media(max-width:860px){
 
-  .burger{
-    display:flex;
-  }
-
   .nav-call{
     display:none;
+  }
+
+  .burger{
+    display:flex;
   }
 
   .links{
@@ -1270,20 +1051,18 @@ footer{
     top:0;
     bottom:0;
     inset-inline-end:0;
-    width:min(84%,350px);
+    width:min(84%,340px);
     background:var(--bg);
     border-inline-start:1px solid var(--line);
+    display:flex;
     flex-direction:column;
     justify-content:center;
-    gap:28px;
-    font-size:20px;
+    gap:27px;
     transform:translateX(110%);
     visibility:hidden;
-    transition:
-      transform .45s cubic-bezier(.7,.1,.2,1),
-      visibility .45s;
+    transition:.45s cubic-bezier(.7,.1,.2,1);
     z-index:110;
-    box-shadow:-20px 0 60px rgba(0,0,0,.3);
+    box-shadow:-20px 0 60px rgba(0,0,0,.25);
   }
 
   [dir="ltr"] .links{
@@ -1300,16 +1079,29 @@ footer{
   .links a{
     font-size:20px;
   }
+
+  .why-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
 }
 
 @media(max-width:600px){
 
+  .logo{
+    font-size:21px;
+  }
+
+  .logo-box{
+    width:40px;
+    height:40px;
+  }
+
   .hero{
-    padding-top:105px;
+    padding-top:115px;
   }
 
   h1{
-    font-size:clamp(38px,12vw,60px);
+    font-size:40px;
   }
 
   .actions{
@@ -1320,17 +1112,36 @@ footer{
     width:100%;
   }
 
+  .hero-mini{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    text-align:right;
+  }
+
+  .mini{
+    justify-content:flex-start;
+  }
+
   .visual{
-    max-width:300px;
+    max-width:285px;
   }
 
-  .fc{
-    padding:8px 11px;
+  .inspect-card{
     font-size:11px;
+    padding:10px 13px;
   }
 
-  .inspection-visual{
-    min-height:360px;
+  .grid,
+  .projects{
+    grid-template-columns:1fr;
+  }
+
+  .why-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .card{
+    padding:25px;
   }
 
   .float a,
@@ -1340,40 +1151,14 @@ footer{
   }
 }
 
-@media(max-width:380px){
+@media(max-width:370px){
 
-  .logo .t{
-    display:none;
+  .why-grid{
+    grid-template-columns:1fr;
   }
 
-  .hero-points{
-    flex-direction:column;
-    align-items:center;
-  }
-
-  .inspection-card{
-    padding:20px;
-  }
-}
-
-@media(max-height:500px) and (orientation:landscape){
-
-  .hero{
-    min-height:auto;
-    padding-top:100px;
-  }
-
-  .visual{
-    display:none;
-  }
-}
-
-@media(hover:none){
-
-  .card:hover,
-  .project:hover,
-  .btn:hover{
-    transform:none;
+  .hero-mini{
+    grid-template-columns:1fr;
   }
 }
 
@@ -1384,34 +1169,12 @@ footer{
   *::after{
     animation:none!important;
     transition:none!important;
-    scroll-behavior:auto!important;
   }
 
-  .reveal,
-  .reveal-left{
-    opacity:1!important;
-    transform:none!important;
-  }
-}
-
-@media print{
-
-  nav,
-  .float,
-  .marquee,
-  #progress{
-    display:none;
-  }
-
-  body{
-    background:#fff;
-    color:#000;
-  }
-
-  .reveal,
-  .reveal-left{
+  .reveal{
     opacity:1;
     transform:none;
+    filter:none;
   }
 }
 </style>
@@ -1421,13 +1184,13 @@ footer{
 
 <div id="progress"></div>
 
-<!-- ========================= NAV ========================= -->
+<!-- ================= NAV ================= -->
 
 <nav id="nav">
 
-  <a href="#home" class="logo" aria-label="MAS">
+  <a href="#home" class="logo">
     <span class="logo-box">M</span>
-    <span class="t">MAS</span>
+    <span>MAS</span>
   </a>
 
   <div class="links" id="links">
@@ -1436,9 +1199,9 @@ footer{
 
     <a href="#services">خدماتنا</a>
 
-    <a href="#inspection">الفحص والاستلام</a>
+    <a href="#inspection">الفحص</a>
 
-    <a href="#why">لماذا MAS</a>
+    <a href="#process">كيف نعمل</a>
 
     <a href="#projects">أعمالنا</a>
 
@@ -1455,15 +1218,15 @@ footer{
     <a
       href="tel:+201229751050"
       class="btn nav-call"
-      style="min-height:44px;padding:8px 20px"
+      style="min-height:43px;padding:8px 20px"
     >
-      اتصل بنا
+      📞 اتصل بنا
     </a>
 
     <button
       class="burger"
       id="burger"
-      aria-label="القائمة"
+      aria-label="فتح القائمة"
       aria-expanded="false"
     >
       <span></span>
@@ -1477,89 +1240,86 @@ footer{
 
 <div class="scrim" id="scrim"></div>
 
-<!-- ========================= HERO ========================= -->
+<!-- ================= HERO ================= -->
 
 <header class="hero" id="home">
 
   <div class="hero-inner">
 
-    <div class="hero-copy reveal">
+    <div>
 
-      <div class="eyebrow">
+      <div class="badge">
         <i></i>
         العلمين الجديدة · الساحل الشمالي
       </div>
 
       <h1>
-        تشطيبك
-        <span class="gt">يستاهل</span>
-        عين خبيرة
+        استلم وحدتك
+        <span class="gradient">وأنت مطمّن</span>
       </h1>
 
-      <p class="lead">
-        MAS متخصصة في أعمال التشطيبات والمعاينة والفحص قبل الاستلام،
-        لمساعدتك على اكتشاف العيوب ومراجعة جودة التنفيذ والتأكد من أن
-        شقتك أو وحدتك جاهزة للاستلام بالشكل المطلوب.
+      <p class="hero-text">
+        MAS متخصصة في فحص وتشطيبات الوحدات السكنية والتجارية،
+        والكشف عن العيوب والأعمال الفنية قبل الاستلام،
+        من السباكة والتسريبات والصرف إلى الكهرباء والتشطيبات.
       </p>
 
       <div class="actions">
 
         <a href="#contact" class="btn">
-          🔎 اطلب فحص شقتك
+          🔍 اطلب فحص وحدتك
         </a>
 
-        <a href="#services" class="btn btn-outline">
-          اكتشف خدماتنا
+        <a href="#inspection" class="btn btn-outline">
+          تعرف على الفحص
         </a>
 
       </div>
 
-      <div class="hero-points">
+      <div class="hero-mini">
 
-        <div class="point">
-          <b>✓</b>
-          فحص دقيق
+        <div class="mini">
+          <div class="mini-icon">🚿</div>
+          <div>
+            <strong>فحص السباكة</strong>
+            <span>تسريبات · صرف · ضغط مياه</span>
+          </div>
         </div>
 
-        <div class="point">
-          <b>✓</b>
-          مراجعة التشطيبات
+        <div class="mini">
+          <div class="mini-icon">⚡</div>
+          <div>
+            <strong>فحص الكهرباء</strong>
+            <span>مخارج · لوحات · توصيلات</span>
+          </div>
         </div>
 
-        <div class="point">
-          <b>✓</b>
-          كشف العيوب
-        </div>
-
-        <div class="point">
-          <b>✓</b>
-          معاينة قبل الاستلام
+        <div class="mini">
+          <div class="mini-icon">🧱</div>
+          <div>
+            <strong>فحص التشطيبات</strong>
+            <span>حوائط · أسقف · عيوب تنفيذ</span>
+          </div>
         </div>
 
       </div>
 
     </div>
 
-    <div class="visual reveal" aria-hidden="true">
+    <div class="visual" aria-hidden="true">
 
       <div class="visual-ring"></div>
 
-      <div class="building"></div>
+      <div class="house"></div>
 
-      <div class="scan"></div>
-
-      <div class="crane">
-        <b class="v"></b>
-        <b class="h"></b>
-        <b class="k"></b>
+      <div class="inspect-card one">
+        🔍 فحص دقيق
+        <span>قبل الاستلام</span>
       </div>
 
-      <div class="fc fc1">
-        🔎 فحص دقيق
-      </div>
-
-      <div class="fc fc2">
-        ✓ جاهز للاستلام
+      <div class="inspect-card two">
+        🚿 كشف التسريبات
+        <span>وفحص أعمال السباكة</span>
       </div>
 
     </div>
@@ -1568,628 +1328,496 @@ footer{
 
 </header>
 
-<!-- ========================= MARQUEE ========================= -->
+<!-- ================= MARQUEE ================= -->
 
-<div class="marquee" aria-hidden="true">
+<div class="marquee">
 
   <div class="track" id="track">
 
-    <span>FINISHING</span>
+    <span>PROPERTY INSPECTION</span>
     <span>◆</span>
-    <span>INSPECTION</span>
+
+    <span>PLUMBING CHECK</span>
     <span>◆</span>
-    <span>HANDOVER</span>
+
+    <span>ELECTRICAL CHECK</span>
     <span>◆</span>
-    <span>QUALITY CHECK</span>
+
+    <span>FINISHING INSPECTION</span>
     <span>◆</span>
+
     <span>NEW ALAMEIN</span>
-    <span>◆</span>
-    <span>FINISHING</span>
-    <span>◆</span>
-    <span>INSPECTION</span>
-    <span>◆</span>
-    <span>HANDOVER</span>
     <span>◆</span>
 
   </div>
 
 </div>
 
-<!-- ========================= SERVICES ========================= -->
+<!-- ================= SERVICES ================= -->
 
 <section id="services">
 
-  <div class="head reveal">
+  <div class="container">
 
-    <small>SERVICES</small>
+    <div class="section-head reveal">
 
-    <h2>
-      خدمات متخصصة في التشطيب والفحص
-    </h2>
-
-    <p>
-      بنساعدك تتأكد إن كل تفصيلة في وحدتك متنفذة بالشكل الصحيح.
-    </p>
-
-  </div>
-
-  <div class="grid">
-
-    <article class="card reveal">
-
-      <div class="icon">🎨</div>
-
-      <h3>أعمال التشطيبات</h3>
-
-      <p>
-        تنفيذ ومتابعة أعمال التشطيبات الداخلية والخارجية
-        مع الاهتمام بالتفاصيل وجودة الخامات والتنفيذ.
-      </p>
-
-      <span class="service-badge">
-        تشطيب داخلي وخارجي
-      </span>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">🔎</div>
-
-      <h3>فحص الشقق والوحدات</h3>
-
-      <p>
-        فحص الوحدة بشكل منظم لاكتشاف الملاحظات والعيوب
-        التي قد تحتاج إلى معالجة قبل الاستلام.
-      </p>
-
-      <span class="service-badge">
-        قبل الاستلام
-      </span>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">📋</div>
-
-      <h3>استلام التشطيبات</h3>
-
-      <p>
-        مراجعة بنود التشطيب ومقارنة التنفيذ بالمطلوب
-        وتسجيل الملاحظات التي تحتاج إلى تعديل.
-      </p>
-
-      <span class="service-badge">
-        مراجعة وتسليم
-      </span>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">🧱</div>
-
-      <h3>كشف عيوب التنفيذ</h3>
-
-      <p>
-        البحث عن العيوب الظاهرة في التشطيبات والأعمال
-        المختلفة وتحديد الملاحظات التي تحتاج إلى معالجة.
-      </p>
-
-      <span class="service-badge">
-        Quality Check
-      </span>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">📐</div>
-
-      <h3>معاينة ومراجعة</h3>
-
-      <p>
-        معاينة المكان ومراجعة حالة التشطيبات وتحديد
-        أهم النقاط التي يجب الانتباه إليها.
-      </p>
-
-      <span class="service-badge">
-        معاينة ميدانية
-      </span>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">🛠️</div>
-
-      <h3>متابعة أعمال التصحيح</h3>
-
-      <p>
-        متابعة الملاحظات التي تم اكتشافها والتأكد من
-        معالجة البنود المطلوبة بالشكل المناسب.
-      </p>
-
-      <span class="service-badge">
-        متابعة التنفيذ
-      </span>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ========================= INSPECTION ========================= -->
-
-<section id="inspection" class="inspection alt">
-
-  <div class="head reveal">
-
-    <small>INSPECTION</small>
-
-    <h2>
-      قبل ما تستلم وحدتك... افحصها
-    </h2>
-
-    <p>
-      الفحص قبل الاستلام يساعدك على معرفة الملاحظات التي تحتاج إلى
-      معالجة قبل إنهاء عملية الاستلام.
-    </p>
-
-  </div>
-
-  <div class="inspection-box">
-
-    <div class="check-list">
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>مراجعة التشطيبات</h4>
-          <p>
-            فحص جودة التشطيبات ومراجعة التفاصيل الظاهرة.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>كشف الملاحظات</h4>
-          <p>
-            تحديد البنود التي تحتاج إلى تعديل أو معالجة.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>فحص الأبواب والشبابيك</h4>
-          <p>
-            مراجعة حالة الأبواب والشبابيك والتشطيبات المحيطة بها.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>مراجعة الحوائط والأرضيات</h4>
-          <p>
-            فحص المظهر العام وجودة التنفيذ والملاحظات الواضحة.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>مراجعة المرافق والتجهيزات</h4>
-          <p>
-            مراجعة النقاط والتجهيزات التي يمكن اختبارها أثناء المعاينة.
-          </p>
-        </div>
-
-      </div>
-
-      <div class="check reveal">
-
-        <div class="check-icon">✓</div>
-
-        <div>
-          <h4>تجميع الملاحظات</h4>
-          <p>
-            ترتيب الملاحظات لتسهيل مراجعتها ومعالجتها.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div class="inspection-visual reveal">
-
-      <div class="inspection-card">
-
-        <div class="inspection-card-top">
-
-          <b>تقرير الفحص</b>
-
-          <span class="status">
-            Inspection
-          </span>
-
-        </div>
-
-        <div class="progress-item">
-
-          <div class="progress-head">
-            <span>التشطيبات</span>
-            <span>مراجعة</span>
-          </div>
-
-          <div class="progress-line">
-            <span></span>
-          </div>
-
-        </div>
-
-        <div class="progress-item">
-
-          <div class="progress-head">
-            <span>الأرضيات</span>
-            <span>فحص</span>
-          </div>
-
-          <div class="progress-line">
-            <span style="animation-delay:.3s"></span>
-          </div>
-
-        </div>
-
-        <div class="progress-item">
-
-          <div class="progress-head">
-            <span>الأبواب والشبابيك</span>
-            <span>مراجعة</span>
-          </div>
-
-          <div class="progress-line">
-            <span style="animation-delay:.6s"></span>
-          </div>
-
-        </div>
-
-        <div class="progress-item">
-
-          <div class="progress-head">
-            <span>الملاحظات</span>
-            <span>تسجيل</span>
-          </div>
-
-          <div class="progress-line">
-            <span style="animation-delay:.9s"></span>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ========================= WHY ========================= -->
-
-<section id="why">
-
-  <div class="head reveal">
-
-    <small>WHY MAS</small>
-
-    <h2>
-      ليه تختار MAS؟
-    </h2>
-
-    <p>
-      لأن التفاصيل الصغيرة في التشطيب ممكن تعمل فرق كبير.
-    </p>
-
-  </div>
-
-  <div class="grid">
-
-    <article class="card reveal">
-
-      <div class="icon">🔍</div>
-
-      <h3>عين على التفاصيل</h3>
-
-      <p>
-        بنركز على التفاصيل والملاحظات اللي ممكن تتعدي بسهولة
-        أثناء المعاينة العادية.
-      </p>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">📋</div>
-
-      <h3>مراجعة منظمة</h3>
-
-      <p>
-        الفحص بيكون منظم بدل ما يكون مجرد نظرة سريعة على الوحدة.
-      </p>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">🤝</div>
-
-      <h3>وضوح وشفافية</h3>
-
-      <p>
-        بنوضح الملاحظات الموجودة ونساعدك تعرف إيه اللي محتاج متابعة.
-      </p>
-
-    </article>
-
-    <article class="card reveal">
-
-      <div class="icon">📍</div>
-
-      <h3>خبرة محلية</h3>
-
-      <p>
-        تركيزنا على العلمين الجديدة والساحل الشمالي ومشروعات المنطقة.
-      </p>
-
-    </article>
-
-  </div>
-
-</section>
-
-<!-- ========================= PROCESS ========================= -->
-
-<section class="alt">
-
-  <div class="head reveal">
-
-    <small>PROCESS</small>
-
-    <h2>
-      بنشتغل إزاي؟
-    </h2>
-
-    <p>
-      خطوات بسيطة وواضحة من أول المعاينة لحد تسليم الملاحظات.
-    </p>
-
-  </div>
-
-  <div class="grid steps">
-
-    <div class="card step reveal">
-
-      <h3>تحديد الموعد</h3>
-
-      <p>
-        نتفق على موعد مناسب لمعاينة الوحدة.
-      </p>
-
-    </div>
-
-    <div class="card step reveal">
-
-      <h3>المعاينة والفحص</h3>
-
-      <p>
-        فحص الوحدة ومراجعة التشطيبات والتفاصيل المختلفة.
-      </p>
-
-    </div>
-
-    <div class="card step reveal">
-
-      <h3>تسجيل الملاحظات</h3>
-
-      <p>
-        تحديد الملاحظات والعيوب التي تحتاج إلى معالجة.
-      </p>
-
-    </div>
-
-    <div class="card step reveal">
-
-      <h3>المتابعة</h3>
-
-      <p>
-        متابعة البنود المطلوبة ومراجعتها بعد المعالجة عند الحاجة.
-      </p>
-
-    </div>
-
-  </div>
-
-</section>
-
-<!-- ========================= PROJECTS ========================= -->
-
-<section id="projects">
-
-  <div class="head reveal">
-
-    <small>OUR WORK</small>
-
-    <h2>
-      من أعمالنا
-    </h2>
-
-    <p>
-      نماذج من مجالات العمل والخدمات التي نقدمها.
-    </p>
-
-  </div>
-
-  <div class="grid projects">
-
-    <a href="#contact" class="project reveal">
-
-      <div class="pb"></div>
-
-      <div class="pc">
-
-        <small>تشطيبات</small>
-
-        <h3>
-          تشطيب وحدة سكنية
-        </h3>
-
-      </div>
-
-    </a>
-
-    <a href="#contact" class="project reveal">
-
-      <div class="pb"></div>
-
-      <div class="pc">
-
-        <small>فحص واستلام</small>
-
-        <h3>
-          فحص شقة قبل الاستلام
-        </h3>
-
-      </div>
-
-    </a>
-
-    <a href="#contact" class="project reveal">
-
-      <div class="pb"></div>
-
-      <div class="pc">
-
-        <small>معاينة</small>
-
-        <h3>
-          معاينة ومراجعة تشطيبات
-        </h3>
-
-      </div>
-
-    </a>
-
-  </div>
-
-</section>
-
-<!-- ========================= CONTACT ========================= -->
-
-<section id="contact" class="alt">
-
-  <div class="contact reveal">
-
-    <div class="head" style="margin-bottom:0">
-
-      <small>CONTACT</small>
+      <small>OUR SERVICES</small>
 
       <h2>
-        جاهز تفحص وحدتك؟
+        كل ما تحتاجه وحدتك
+        <span class="gradient">في فحص واحد</span>
       </h2>
 
       <p>
-        تواصل معنا وحدد موعد المعاينة أو الاستلام.
+        نراجع التفاصيل التي قد لا تظهر بالعين بسهولة قبل استلام الوحدة.
       </p>
 
     </div>
 
     <div class="grid">
 
-      <div class="card">
+      <article class="card reveal">
 
-        <div class="icon" style="margin-inline:auto">
-          📞
-        </div>
+        <div class="icon">🔍</div>
 
-        <h3>
-          اتصل بنا
-        </h3>
-
-        <a href="tel:+201229751050">
-          01229751050
-        </a>
-
-      </div>
-
-      <div class="card">
-
-        <div class="icon" style="margin-inline:auto">
-          💬
-        </div>
-
-        <h3>
-          واتساب
-        </h3>
-
-        <a
-          href="https://wa.me/201229751050"
-          target="_blank"
-          rel="noopener"
-        >
-          راسلنا الآن
-        </a>
-
-      </div>
-
-      <div class="card">
-
-        <div class="icon" style="margin-inline:auto">
-          📍
-        </div>
-
-        <h3>
-          نطاق العمل
-        </h3>
+        <h3>فحص واستلام الوحدات</h3>
 
         <p>
-          العلمين الجديدة والساحل الشمالي
+          مراجعة الوحدة قبل الاستلام واكتشاف الملاحظات والعيوب
+          التي تحتاج إلى معالجة.
         </p>
 
-      </div>
+      </article>
+
+      <article class="card reveal">
+
+        <div class="icon">🚿</div>
+
+        <h3>فحص أعمال السباكة</h3>
+
+        <p>
+          مراجعة التغذية والصرف وضغط المياه والكشف عن التسريبات
+          والمشكلات المحتملة في الأعمال الصحية.
+        </p>
+
+      </article>
+
+      <article class="card reveal">
+
+        <div class="icon">💧</div>
+
+        <h3>كشف التسريبات</h3>
+
+        <p>
+          فحص النقاط والمناطق المعرضة للتسريب ومحاولة تحديد
+          المشكلات قبل أن تتحول إلى أضرار أكبر.
+        </p>
+
+      </article>
+
+      <article class="card reveal">
+
+        <div class="icon">⚡</div>
+
+        <h3>فحص الكهرباء</h3>
+
+        <p>
+          مراجعة المخارج والمفاتيح واللوحات والتوصيلات
+          وملاحظات التنفيذ الظاهرة.
+        </p>
+
+      </article>
+
+      <article class="card reveal">
+
+        <div class="icon">🧱</div>
+
+        <h3>فحص التشطيبات</h3>
+
+        <p>
+          مراجعة الحوائط والأسقف والزوايا والتشطيبات
+          واكتشاف العيوب الظاهرة في التنفيذ.
+        </p>
+
+      </article>
+
+      <article class="card reveal">
+
+        <div class="icon">📋</div>
+
+        <h3>تقرير بالملاحظات</h3>
+
+        <p>
+          تجميع الملاحظات التي تظهر أثناء الفحص بشكل واضح
+          لتعرف ما يحتاج إلى معالجة قبل الاستلام.
+        </p>
+
+      </article>
 
     </div>
+
+  </div>
+
+</section>
+
+<!-- ================= INSPECTION ================= -->
+
+<section id="inspection" class="alt">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <small>INSPECTION</small>
+
+      <h2>
+        بنفحص إيه بالضبط؟
+      </h2>
+
+      <p>
+        الفحص مش مجرد نظرة سريعة على الشقة، لكن مراجعة لعدة نقاط مهمة.
+      </p>
+
+    </div>
+
+    <div class="grid inspect-grid">
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">01</span>
+
+        <div class="icon">🚿</div>
+
+        <h3>السباكة والصرف</h3>
+
+        <p>
+          مراجعة نقاط المياه والصرف، ضغط المياه،
+          العلامات الظاهرة للتسريب وملاحظات التنفيذ.
+        </p>
+
+      </article>
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">02</span>
+
+        <div class="icon">💧</div>
+
+        <h3>التسريبات والرطوبة</h3>
+
+        <p>
+          فحص المناطق التي يمكن أن تظهر بها آثار مياه أو رطوبة
+          ومراجعة الأسباب المحتملة للمشكلة.
+        </p>
+
+      </article>
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">03</span>
+
+        <div class="icon">⚡</div>
+
+        <h3>الكهرباء</h3>
+
+        <p>
+          مراجعة نقاط الكهرباء والمفاتيح والمخارج
+          واللوحة والملاحظات الظاهرة في التنفيذ.
+        </p>
+
+      </article>
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">04</span>
+
+        <div class="icon">🧱</div>
+
+        <h3>الحوائط والأسقف</h3>
+
+        <p>
+          البحث عن الشروخ والملاحظات الظاهرة
+          وعدم انتظام بعض الأسطح ومشكلات التشطيب.
+        </p>
+
+      </article>
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">05</span>
+
+        <div class="icon">🚪</div>
+
+        <h3>الأعمال النهائية</h3>
+
+        <p>
+          مراجعة العناصر الظاهرة داخل الوحدة والتأكد
+          من وجود الملاحظات التي تحتاج إلى معالجة.
+        </p>
+
+      </article>
+
+      <article class="card check-card reveal">
+
+        <span class="check-number">06</span>
+
+        <div class="icon">📑</div>
+
+        <h3>حصر الملاحظات</h3>
+
+        <p>
+          ترتيب الملاحظات المكتشفة أثناء الفحص
+          لتسهيل الرجوع إليها ومعالجتها.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= WHY ================= -->
+
+<section>
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <small>WHY MAS</small>
+
+      <h2>
+        ليه تعمل فحص قبل الاستلام؟
+      </h2>
+
+    </div>
+
+    <div class="grid why-grid">
+
+      <article class="card why reveal">
+
+        <div class="icon">🔎</div>
+
+        <h3>تشوف اللي ممكن يفوتك</h3>
+
+        <p>
+          الفحص المنظم يساعد على اكتشاف ملاحظات قد لا تنتبه لها أثناء المعاينة العادية.
+        </p>
+
+      </article>
+
+      <article class="card why reveal">
+
+        <div class="icon">💰</div>
+
+        <h3>تقلل المفاجآت</h3>
+
+        <p>
+          معرفة الملاحظات قبل الاستلام أفضل من اكتشافها بعد بدء الاستخدام.
+        </p>
+
+      </article>
+
+      <article class="card why reveal">
+
+        <div class="icon">🛡️</div>
+
+        <h3>تستلم وأنت مطمئن</h3>
+
+        <p>
+          فحص عدة جوانب من الوحدة يعطيك صورة أوضح عن حالتها.
+        </p>
+
+      </article>
+
+      <article class="card why reveal">
+
+        <div class="icon">📋</div>
+
+        <h3>ملاحظات واضحة</h3>
+
+        <p>
+          تعرف النقاط التي تحتاج إلى مراجعة أو معالجة قبل الاستلام.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= PROCESS ================= -->
+
+<section id="process" class="alt">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <small>OUR PROCESS</small>
+
+      <h2>
+        بنشتغل إزاي؟
+      </h2>
+
+      <p>
+        خطوات بسيطة ومنظمة من أول التواصل حتى نهاية الفحص.
+      </p>
+
+    </div>
+
+    <div class="grid steps">
+
+      <article class="card step reveal">
+
+        <h3>التواصل وتحديد الموعد</h3>
+
+        <p>
+          تتواصل معنا ونحدد موعد مناسب لمعاينة الوحدة.
+        </p>
+
+      </article>
+
+      <article class="card step reveal">
+
+        <h3>الفحص والمعاينة</h3>
+
+        <p>
+          نراجع النقاط المختلفة داخل الوحدة حسب طبيعة المكان.
+        </p>
+
+      </article>
+
+      <article class="card step reveal">
+
+        <h3>تحديد الملاحظات</h3>
+
+        <p>
+          يتم تسجيل الملاحظات والمشكلات التي تظهر أثناء الفحص.
+        </p>
+
+      </article>
+
+      <article class="card step reveal">
+
+        <h3>تسليم الملاحظات</h3>
+
+        <p>
+          تحصل على صورة أوضح عن حالة الوحدة وما يحتاج إلى مراجعة.
+        </p>
+
+      </article>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= PROJECTS ================= -->
+
+<section id="projects">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <small>FIELD WORK</small>
+
+      <h2>
+        خدماتنا على أرض الواقع
+      </h2>
+
+      <p>
+        فحص وتشطيبات للوحدات والمشروعات في العلمين الجديدة والساحل الشمالي.
+      </p>
+
+    </div>
+
+    <div class="grid projects">
+
+      <a href="#contact" class="project reveal">
+
+        <div class="project-art"></div>
+
+        <div class="project-building"></div>
+
+        <div class="project-content">
+
+          <small>INSPECTION</small>
+
+          <h3>فحص وحدة قبل الاستلام</h3>
+
+        </div>
+
+      </a>
+
+      <a href="#contact" class="project reveal">
+
+        <div class="project-art"></div>
+
+        <div class="project-building"></div>
+
+        <div class="project-content">
+
+          <small>PLUMBING</small>
+
+          <h3>فحص السباكة والتسريبات</h3>
+
+        </div>
+
+      </a>
+
+      <a href="#contact" class="project reveal">
+
+        <div class="project-art"></div>
+
+        <div class="project-building"></div>
+
+        <div class="project-content">
+
+          <small>FINISHING</small>
+
+          <h3>مراجعة أعمال التشطيب</h3>
+
+        </div>
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= CTA ================= -->
+
+<section class="alt">
+
+  <div class="cta-box reveal">
+
+    <h2>
+      قبل ما تستلم...
+      <span class="gradient">افحص الأول 🔍</span>
+    </h2>
+
+    <p>
+      لو عندك شقة أو وحدة في العلمين الجديدة أو الساحل الشمالي
+      وعايز تعرف الملاحظات الموجودة فيها قبل الاستلام،
+      تواصل معنا.
+    </p>
 
     <div class="actions" style="justify-content:center">
 
       <a
         href="https://wa.me/201229751050"
-        class="btn"
         target="_blank"
         rel="noopener"
+        class="btn"
       >
         💬 تواصل عبر واتساب
       </a>
@@ -2203,15 +1831,84 @@ footer{
 
     </div>
 
-    <div class="socials">
+  </div>
+
+</section>
+
+<!-- ================= CONTACT ================= -->
+
+<section id="contact">
+
+  <div class="container">
+
+    <div class="section-head reveal">
+
+      <small>CONTACT</small>
+
+      <h2>
+        جاهز تفحص وحدتك؟
+      </h2>
+
+      <p>
+        تواصل معنا وحدد موقع الوحدة وموعد الفحص.
+      </p>
+
+    </div>
+
+    <div class="grid contact-grid">
+
+      <div class="card contact-card reveal">
+
+        <div class="icon">📞</div>
+
+        <h3>اتصل بنا</h3>
+
+        <a href="tel:+201229751050">
+          01229751050
+        </a>
+
+      </div>
+
+      <div class="card contact-card reveal">
+
+        <div class="icon">💬</div>
+
+        <h3>واتساب</h3>
+
+        <a
+          href="https://wa.me/201229751050"
+          target="_blank"
+          rel="noopener"
+        >
+          راسلنا الآن
+        </a>
+
+      </div>
+
+      <div class="card contact-card reveal">
+
+        <div class="icon">📍</div>
+
+        <h3>نطاق العمل</h3>
+
+        <p>
+          العلمين الجديدة<br>
+          والساحل الشمالي
+        </p>
+
+      </div>
+
+    </div>
+
+    <div style="text-align:center">
 
       <a
-        class="social"
         href="https://web.facebook.com/mas.contracting.newalamein"
         target="_blank"
         rel="noopener"
+        class="btn reveal"
       >
-        📘 صفحة MAS على فيسبوك
+        📘 تابعنا على فيسبوك
       </a>
 
     </div>
@@ -2220,25 +1917,23 @@ footer{
 
 </section>
 
-<!-- ========================= FOOTER ========================= -->
+<!-- ================= FOOTER ================= -->
 
 <footer>
 
   © <span id="year"></span>
   MAS
-  —
-  للتشطيبات والفحص والمعاينة
-  —
-  جميع الحقوق محفوظة
+  — فحص وتشطيبات الوحدات
+  · جميع الحقوق محفوظة
 
 </footer>
 
-<!-- ========================= FLOAT BUTTONS ========================= -->
+<!-- ================= FLOATING ================= -->
 
 <div class="float">
 
   <a
-    class="wa"
+    class="whatsapp"
     href="https://wa.me/201229751050"
     target="_blank"
     rel="noopener"
@@ -2261,342 +1956,283 @@ footer{
 
 (function(){
 
-  const $ = selector => document.querySelector(selector);
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
 
-  const $$ = selector => document.querySelectorAll(selector);
+const root = document.documentElement;
+const nav = $('#nav');
+const links = $('#links');
+const burger = $('#burger');
+const scrim = $('#scrim');
+const progress = $('#progress');
+const topBtn = $('#top');
 
-  const root = document.documentElement;
+$('#year').textContent = new Date().getFullYear();
 
-  const nav = $('#nav');
+/* =========================
+   MARQUEE LOOP
+========================= */
 
-  const links = $('#links');
+const track = $('#track');
 
-  const burger = $('#burger');
-
-  const scrim = $('#scrim');
-
-  const progress = $('#progress');
-
-  const topBtn = $('#top');
-
-
-  /* YEAR */
-
-  $('#year').textContent = new Date().getFullYear();
-
-
-  /* MARQUEE */
-
-  const track = $('#track');
-
+if(track){
   track.innerHTML += track.innerHTML;
+}
 
+/* =========================
+   THEME
+========================= */
 
-  /* =========================
-     THEME
-  ========================= */
+let savedTheme = null;
 
-  let savedTheme = null;
+try{
+  savedTheme = localStorage.getItem('mas-theme');
+}catch(e){}
+
+if(savedTheme){
+  root.dataset.theme = savedTheme;
+}
+
+$('#theme').onclick = function(){
+
+  const next =
+    root.dataset.theme === 'light'
+    ? 'dark'
+    : 'light';
+
+  root.dataset.theme = next;
 
   try{
-    savedTheme = localStorage.getItem('mas-theme');
+    localStorage.setItem('mas-theme',next);
   }catch(e){}
 
-  if(savedTheme){
-    root.dataset.theme = savedTheme;
-  }
+};
 
+/* =========================
+   MOBILE MENU
+========================= */
 
-  $('#theme').onclick = function(){
+function menu(open){
 
-    const current = root.dataset.theme === 'light'
-      ? 'light'
-      : 'dark';
+  links.classList.toggle('open',open);
 
-    const next = current === 'light'
-      ? 'dark'
-      : 'light';
+  burger.classList.toggle('open',open);
 
-    root.dataset.theme = next;
+  scrim.classList.toggle('show',open);
 
-    this.textContent = next === 'light'
-      ? '☾'
-      : '☀';
-
-    try{
-      localStorage.setItem('mas-theme',next);
-    }catch(e){}
-
-  };
-
-
-  $('#theme').textContent =
-    root.dataset.theme === 'light'
-      ? '☾'
-      : '☀';
-
-
-  /* =========================
-     MOBILE MENU
-  ========================= */
-
-  function menu(open){
-
-    links.classList.toggle('open',open);
-
-    burger.classList.toggle('open',open);
-
-    scrim.classList.toggle('show',open);
-
-    burger.setAttribute(
-      'aria-expanded',
-      open ? 'true' : 'false'
-    );
-
-    document.body.style.overflow =
-      open ? 'hidden' : '';
-
-  }
-
-
-  burger.onclick = function(){
-
-    menu(!links.classList.contains('open'));
-
-  };
-
-
-  scrim.onclick = function(){
-
-    menu(false);
-
-  };
-
-
-  links.addEventListener('click',function(e){
-
-    if(e.target.tagName === 'A'){
-
-      menu(false);
-
-    }
-
-  });
-
-
-  document.addEventListener('keydown',function(e){
-
-    if(e.key === 'Escape'){
-
-      menu(false);
-
-    }
-
-  });
-
-
-  window.addEventListener('resize',function(){
-
-    if(innerWidth > 860){
-
-      menu(false);
-
-    }
-
-  });
-
-
-  /* =========================
-     SCROLL
-  ========================= */
-
-  let ticking = false;
-
-  function updateScroll(){
-
-    const y = window.scrollY;
-
-    const h =
-      document.documentElement.scrollHeight -
-      window.innerHeight;
-
-    const value = h > 0 ? y / h : 0;
-
-    progress.style.transform =
-      `scaleX(${value})`;
-
-    nav.classList.toggle(
-      'scrolled',
-      y > 35
-    );
-
-    topBtn.classList.toggle(
-      'show',
-      y > 500
-    );
-
-    ticking = false;
-
-  }
-
-
-  window.addEventListener(
-    'scroll',
-    function(){
-
-      if(!ticking){
-
-        ticking = true;
-
-        requestAnimationFrame(updateScroll);
-
-      }
-
-    },
-    {passive:true}
+  burger.setAttribute(
+    'aria-expanded',
+    open ? 'true' : 'false'
   );
 
+  document.body.style.overflow =
+    open ? 'hidden' : '';
 
-  updateScroll();
+}
 
+burger.onclick = function(){
 
-  topBtn.onclick = function(){
+  menu(!links.classList.contains('open'));
 
-    window.scrollTo({
-      top:0,
-      behavior:'smooth'
-    });
+};
 
-  };
+scrim.onclick = function(){
+  menu(false);
+};
 
+links.addEventListener('click',function(e){
 
-  /* =========================
-     REPEATING SCROLL ANIMATION
-     =========================
-     
-     العنصر لما يدخل الشاشة:
-     show
-
-     لما يخرج:
-     remove
-
-     وبالتالي لما تطلع وتنزل
-     الأنيميشن يشتغل من جديد.
-  */
-
-  const revealElements =
-    document.querySelectorAll('.reveal');
-
-
-  if('IntersectionObserver' in window){
-
-    const revealObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-              /*
-                Force restart
-                للأنيميشن في كل دخول
-              */
-
-              entry.target.classList.remove('show');
-
-              void entry.target.offsetWidth;
-
-              entry.target.classList.add('show');
-
-            }else{
-
-              /*
-                لما العنصر يخرج من الشاشة
-                بنرجعه للحالة الأصلية
-              */
-
-              entry.target.classList.remove('show');
-
-            }
-
-          });
-
-        },
-        {
-          threshold:.12,
-          rootMargin:'0px 0px -5% 0px'
-        }
-      );
-
-
-    revealElements.forEach(
-      element => revealObserver.observe(element)
-    );
-
-  }else{
-
-    revealElements.forEach(
-      element => element.classList.add('show')
-    );
-
+  if(e.target.tagName === 'A'){
+    menu(false);
   }
 
+});
 
-  /* =========================
-     ACTIVE NAV
-  ========================= */
+document.addEventListener('keydown',function(e){
 
-  const sections =
-    Array.from(
-      document.querySelectorAll(
-        'header[id],section[id]'
-      )
-    );
-
-  const navLinks =
-    Array.from(
-      links.querySelectorAll('a')
-    );
-
-
-  if('IntersectionObserver' in window){
-
-    const sectionObserver =
-      new IntersectionObserver(
-        entries => {
-
-          entries.forEach(entry => {
-
-            if(entry.isIntersecting){
-
-              navLinks.forEach(link => {
-
-                link.classList.toggle(
-                  'active',
-                  link.getAttribute('href') ===
-                  '#' + entry.target.id
-                );
-
-              });
-
-            }
-
-          });
-
-        },
-        {
-          rootMargin:'-40% 0px -50% 0px'
-        }
-      );
-
-
-    sections.forEach(
-      section => sectionObserver.observe(section)
-    );
-
+  if(e.key === 'Escape'){
+    menu(false);
   }
 
+});
+
+window.addEventListener('resize',function(){
+
+  if(innerWidth > 860){
+    menu(false);
+  }
+
+});
+
+/* =========================
+   SCROLL
+========================= */
+
+let ticking = false;
+
+function updateScroll(){
+
+  const y = scrollY;
+
+  const max =
+    document.documentElement.scrollHeight -
+    innerHeight;
+
+  progress.style.transform =
+    `scaleX(${max > 0 ? y/max : 0})`;
+
+  nav.classList.toggle(
+    'scrolled',
+    y > 30
+  );
+
+  topBtn.classList.toggle(
+    'show',
+    y > 500
+  );
+
+  ticking = false;
+
+}
+
+addEventListener(
+  'scroll',
+  function(){
+
+    if(!ticking){
+
+      ticking = true;
+
+      requestAnimationFrame(updateScroll);
+
+    }
+
+  },
+  {passive:true}
+);
+
+updateScroll();
+
+topBtn.onclick = function(){
+
+  scrollTo({
+    top:0,
+    behavior:'smooth'
+  });
+
+};
+
+/* =========================
+   REVEAL ANIMATION
+   IMPORTANT:
+   animation repeats when
+   scrolling up/down
+========================= */
+
+const revealItems =
+  [...document.querySelectorAll('.reveal')];
+
+if('IntersectionObserver' in window){
+
+  const revealObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting){
+
+            /*
+              كل مرة العنصر يدخل الشاشة
+              نشغل الأنيميشن من جديد
+            */
+
+            entry.target.classList.remove('show');
+
+            void entry.target.offsetWidth;
+
+            entry.target.classList.add('show');
+
+          }else{
+
+            /*
+              لما يخرج من الشاشة
+              نشيل الحالة عشان لما يرجع
+              الأنيميشن يشتغل من البداية
+            */
+
+            entry.target.classList.remove('show');
+
+          }
+
+        });
+
+      },
+      {
+        threshold:.16,
+        rootMargin:'0px 0px -5% 0px'
+      }
+    );
+
+  revealItems.forEach(
+    item => revealObserver.observe(item)
+  );
+
+}else{
+
+  revealItems.forEach(
+    item => item.classList.add('show')
+  );
+
+}
+
+/* =========================
+   ACTIVE NAV
+========================= */
+
+const sections =
+  [...document.querySelectorAll(
+    'header[id],section[id]'
+  )];
+
+const navLinks =
+  [...links.querySelectorAll('a')];
+
+if('IntersectionObserver' in window){
+
+  const sectionObserver =
+    new IntersectionObserver(
+      entries => {
+
+        entries.forEach(entry => {
+
+          if(entry.isIntersecting){
+
+            navLinks.forEach(a => {
+
+              a.classList.toggle(
+                'active',
+                a.getAttribute('href') ===
+                '#' + entry.target.id
+              );
+
+            });
+
+          }
+
+        });
+
+      },
+      {
+        rootMargin:'-45% 0px -50% 0px'
+      }
+    );
+
+  sections.forEach(
+    section => sectionObserver.observe(section)
+  );
+
+}
 
 })();
 
